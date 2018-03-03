@@ -1,3 +1,4 @@
+package com.learn.datastructures.list.singlylinkedlist;
 
 public class SimpleSinglyLinkedList {
 
