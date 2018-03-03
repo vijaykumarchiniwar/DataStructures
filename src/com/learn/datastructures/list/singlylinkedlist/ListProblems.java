@@ -1,10 +1,10 @@
 package com.learn.datastructures.list.singlylinkedlist;
 
-public class SimpleSinglyLinkedList {
+public class ListProblems {
 
 	Node headNode;
 
-	public SimpleSinglyLinkedList() {
+	public ListProblems() {
 		headNode = null;
 	}
 
@@ -65,9 +65,63 @@ public class SimpleSinglyLinkedList {
 
 	}
 
+	public void count() {
+		int count = 0;
+		Node slowTravPointer = headNode;
+
+		while (slowTravPointer != null) {
+			slowTravPointer = slowTravPointer.getNext();
+			count++;
+		}
+		System.out.println("Count = " + count);
+	}
+
+	public void findMiddleNode() {
+		int count = 0;
+
+		Node slowTravPointer = headNode;
+		Node fastTravPointer = headNode;
+
+		while (fastTravPointer != null && fastTravPointer.next != null) {
+			fastTravPointer = fastTravPointer.next.next;
+			slowTravPointer = slowTravPointer.next;
+			count = count + 2;
+		}
+		if (slowTravPointer != null)
+			System.out.println("Mid Element = " + slowTravPointer.info);
+	}
+
+	public void findMiddleNode1() {
+		if (headNode == null) {
+			System.out.println("List is empty");
+			return;
+		}
+		Node current = headNode;
+		Node middle = headNode;
+		int length = 0;
+	      while(current.next != null){
+	          length++;
+	          if(length%2 ==0){
+	              middle = middle.next;
+	          }
+	          current = current.next;
+	      }
+	    
+	      if(length%2 == 1){
+	          middle = middle.next;
+	      }
+	      
+	      System.out.println("middle element of LinkedList : " + middle.info);
+	}
+	
 	public static void main(String[] args) {
 
-		SimpleSinglyLinkedList list = new SimpleSinglyLinkedList();
+		ListProblems list = new ListProblems();
+
+		list.count();
+		list.findMiddleNode1();
+		System.out.println();
+
 		list.insert(1);
 		list.insert(2);
 		list.insert(3);
@@ -76,21 +130,40 @@ public class SimpleSinglyLinkedList {
 		list.insert(6);
 
 		list.display();
+		list.count();
+		list.findMiddleNode1();
+		System.out.println();
 
 		list.delete(1);
 		list.display();
+		list.count();
+		list.findMiddleNode1();
+		System.out.println();
 
 		list.delete(3);
 		list.display();
+		list.count();
+		list.findMiddleNode1();
+		System.out.println();
 
 		list.delete(6);
 		list.display();
+		list.count();
+		list.findMiddleNode1();
+		System.out.println();
 
 		list.delete(2);
 		list.display();
+		list.count();
+		list.findMiddleNode1();
+		System.out.println();
 
 		list.insertAtFirst(0);
 		list.display();
+		list.count();
+		list.findMiddleNode1();
+		System.out.println();
+
 	}
 }
 
